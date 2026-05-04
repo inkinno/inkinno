@@ -2,24 +2,24 @@
 
 :root {
     /* Color Palette - Deep Dark Premium */
-    --bg-main: #050508;
-    --bg-secondary: #0d0d16;
+    --bg-main: #050505; /* Pure Obsidian */
+    --bg-secondary: #121212; /* Deep Carbon */
     --text-main: #f0f0f5;
     --text-muted: #9aa0a6;
     
     /* Brand Gradients & Accents */
-    --accent-primary: #8a2be2; /* Blue Violet */
-    --accent-secondary: #00d2ff; /* Bright Cyan */
+    --accent-primary: #bd00ff; /* Electric Purple */
+    --accent-secondary: #00ffff; /* Neon Cyan */
     --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
     
     /* Glassmorphism */
-    --glass-bg: rgba(13, 13, 22, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     
     /* Typography */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
     
     /* Layout */
     --container-max: 1200px;
