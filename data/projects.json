@@ -1,0 +1,26 @@
+[
+  {
+    "id": "project-01",
+    "title": "Arcade Hub",
+    "description": "다양한 캐주얼 미니 게임들을 한 곳에서 즐길 수 있는 웹 기반 아케이드 게임 포털입니다. PWA가 적용되어 모바일에서도 앱처럼 쾌적하게 플레이 가능합니다.",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
+    "link": "https://arcade.inkinno.com",
+    "tags": ["HTML5", "Vanilla JS", "PWA", "Firebase"]
+  },
+  {
+    "id": "project-02",
+    "title": "Seoltoonkit",
+    "description": "캐릭터 표정, 포즈, 배경 등을 결합하여 나만의 웹툰 스타일 스토리를 쉽고 빠르게 제작할 수 있는 인터랙티브 애니메이션 툴킷입니다.",
+    "thumbnail": "https://images.unsplash.com/photo-1615671524827-c1fe3973b648?auto=format&fit=crop&q=80&w=800",
+    "link": "https://toon.inkinno.com",
+    "tags": ["Animation", "Timeline", "JSON", "Canvas"]
+  },
+  {
+    "id": "project-03",
+    "title": "English Flashcard",
+    "description": "TTS 기능과 방향키 기반의 직관적인 인터페이스로 영어 단어와 속담을 빠르게 학습할 수 있는 효율적인 플래시카드 앱입니다.",
+    "thumbnail": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=800",
+    "link": "https://flashcard.inkinno.com",
+    "tags": ["Dart", "Flutter", "TTS", "Education"]
+  }
+]
