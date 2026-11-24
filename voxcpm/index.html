@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-8115408139732115">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8115408139732115"
+     crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxCPM 음성 테스트 - inkinno</title>
+    <meta name="description" content="오픈소스 음성 합성 모델 VoxCPM 설치·설정 방법과 활용 팁.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        .doc { max-width: 860px; margin: 120px auto 60px; padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; backdrop-filter: blur(16px); box-shadow: var(--glass-shadow); line-height: 1.75; }
+        .doc h1 { font-size: 2rem; margin-bottom: .5rem; }
+        .doc h2 { font-size: 1.3rem; margin: 2rem 0 .75rem; color: #fff; }
+        .doc p, .doc li { color: var(--text-muted); }
+        .doc ul, .doc ol { padding-left: 1.4rem; }
+        .doc img { width: 100%; border-radius: 12px; margin: 1rem 0; border: 1px solid var(--glass-border); }
+        .doc pre { background: rgba(0,0,0,.4); padding: 14px 16px; border-radius: 10px; overflow-x: auto; font-size: .9rem; color: #e6e6e6; }
+        .doc code { font-family: Consolas, monospace; }
+        .doc table { width: 100%; border-collapse: collapse; margin: .5rem 0; }
+        .doc td { padding: 8px 10px; border-bottom: 1px solid var(--glass-border); color: var(--text-muted); vertical-align: top; }
+        .doc td:first-child { color: #fff; white-space: nowrap; }
+        .back { color: var(--text-muted); text-decoration: none; font-size: .9rem; }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="container header-container">
+            <h1 class="logo"><a href="../" style="text-decoration:none; color:inherit;">in<span>kinno</span></a></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../#home">Home</a></li>
+                    <li><a href="../#projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <article class="doc">
+                <a href="../#projects" class="back">&larr; 프로젝트 목록</a>
+                <h1>음성 테스트 <span class="text-gradient">VoxCPM</span></h1>
+                <p>VoxCPM은 OpenBMB의 오픈소스 음성 합성(TTS) 모델입니다. 몇 초짜리 참고 음성을 넣으면 그 목소리로 원하는 문장을 읽어 줍니다. inkinno에서는 애니메이션 내레이션 가안을 만드는 데 테스트했습니다. 아래는 VoxCPM2 기준 간단 정리입니다.</p>
+
+                <h2>1. 준비</h2>
+                <ul>
+                    <li>NVIDIA GPU(CUDA) 환경 권장. CPU는 매우 느립니다.</li>
+                    <li>Python과 CUDA 버전에 맞는 PyTorch를 먼저 설치합니다.</li>
+                    <li>참고 음성: 잡음 없는 한 사람 목소리 WAV 파일.</li>
+                </ul>
+
+                <h2>2. 설치</h2>
+<pre><code>pip install voxcpm</code></pre>
+                <p>처음 실행할 때 Hugging Face에서 모델(<code>openbmb/VoxCPM2</code>)을 자동으로 내려받습니다. 수 GB라서 첫 실행은 오래 걸립니다.</p>
+
+                <h2>3. 기본 사용법</h2>
+<pre><code>import soundfile as sf
+from voxcpm import VoxCPM
+
+model = VoxCPM.from_pretrained("openbmb/VoxCPM2", load_denoiser=False)
+sr = model.tts_model.sample_rate   # VoxCPM2 = 48000 Hz
+
+wav = model.generate(
+    text="안녕하세요, inkinno 음성 테스트입니다.",
+    reference_wav_path="ref.wav",   # 따라 할 목소리
+    cfg_value=2.0,                  # 높을수록 문장·목소리를 더 강하게 따름
+    inference_timesteps=10,         # 높을수록 품질↑ 속도↓
+)
+sf.write("out.wav", wav, sr)</code></pre>
+
+                <h2>4. 설정 값</h2>
+                <table>
+                    <tr><td>reference_wav_path</td><td>복제할 목소리. 빼면 기본 목소리로 읽습니다.</td></tr>
+                    <tr><td>cfg_value</td><td>2.0 전후에서 시작. 너무 높으면 소리가 딱딱해집니다.</td></tr>
+                    <tr><td>inference_timesteps</td><td>10이면 빠르고 충분히 쓸 만합니다. 품질이 아쉬우면 올려 보세요.</td></tr>
+                    <tr><td>load_denoiser</td><td>참고 음성이 이미 깨끗하면 <code>False</code>로 두어 로딩을 줄입니다.</td></tr>
+                </table>
+
+                <h2>5. 활용 팁</h2>
+                <ul>
+                    <li><b>여러 번 생성해서 고르기</b> — 같은 문장도 실행할 때마다 결과가 다릅니다. 문장마다 2~3개를 만들어 가장 깨끗한 것을 고릅니다.</li>
+                    <li><b>짧게 끊긴 결과 다시 만들기</b> — 출력 길이가 문장 길이에 비해 너무 짧으면 중간이 잘린 것입니다. 길이를 확인해 자동으로 다시 생성하면 편합니다.</li>
+                    <li><b>참고 음성 이어 붙이기</b> — 같은 사람의 짧은 녹음 여러 개를 하나로 이어 붙여 참고 음성으로 쓰면 목소리가 더 안정됩니다.</li>
+                    <li><b>문장 단위로 나누기</b> — 긴 대본은 문장별로 나눠 만들고 편집 프로그램에서 이어 붙입니다.</li>
+                    <li><b>권리 확인</b> — 다른 사람 목소리를 복제할 때는 반드시 본인 동의를 받으세요.</li>
+                </ul>
+            </article>
+        </div>
+    </main>
+    <footer class="glass-footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h4 class="logo">in<span>kinno</span></h4>
+                <p>&copy; 2026 inkinno. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

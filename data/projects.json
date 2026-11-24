@@ -1,5 +1,37 @@
 [
   {
+    "id": "renok",
+    "title": "리녹 (Re-nok) - 보컬 녹음 & 노래 연습",
+    "description": "마이크 버튼 한 번으로 바로 녹음하는 안드로이드 보컬 녹음 앱입니다. 무압축 WAV(44.1kHz) 저장, 알림창 녹음 제어, 화면이 꺼져도 끊기지 않는 녹음, 폴더별 보관함을 지원합니다. 로그인·서버 전송 없이 녹음은 기기 안에만 저장됩니다.",
+    "thumbnail": "assets/img/renok.jpg",
+    "link": "https://play.google.com/store/apps/details?id=com.inkinno.voicerecorder",
+    "tags": ["Flutter", "Android", "WAV", "Google Play"]
+  },
+  {
+    "id": "puppet2d",
+    "title": "Puppet2D - 2D 컷아웃 퍼펫",
+    "description": "관절 단위 조각으로 나눈 2D 인형을 드래그로 포즈 잡는 데스크톱 툴입니다. 손·발 끝을 끌면 팔·다리가 따라오는 IK, 관절별 앞뒤 깊이와 원근, 카메라 앵글, 포즈 JSON 불러오기와 PNG 스틸컷 내보내기를 지원합니다.",
+    "thumbnail": "assets/img/puppet2d.jpg",
+    "link": "puppet2d/",
+    "tags": ["Rust", "egui", "IK", "2D Animation"]
+  },
+  {
+    "id": "youtube",
+    "title": "YouTube @inkinno",
+    "description": "inkinno의 작업 영상, 애니메이션, 노래 반주(MR) 등을 올리는 유튜브 채널입니다.",
+    "thumbnail": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=800",
+    "link": "https://www.youtube.com/@inkinno",
+    "tags": ["YouTube", "Video", "Animation"]
+  },
+  {
+    "id": "voxcpm",
+    "title": "음성 테스트 - VoxCPM",
+    "description": "오픈소스 음성 합성 모델 VoxCPM으로 짧은 참고 음성을 넣어 원하는 목소리로 내레이션을 만드는 테스트입니다. 설치·설정 방법과 활용 팁을 간단히 정리했습니다.",
+    "thumbnail": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800",
+    "link": "voxcpm/",
+    "tags": ["TTS", "Python", "Voice Clone", "Guide"]
+  },
+  {
     "id": "project-01",
     "title": "Arcade Hub",
     "description": "다양한 캐주얼 미니 게임들을 한 곳에서 즐길 수 있는 웹 기반 아케이드 게임 포털입니다. PWA가 적용되어 모바일에서도 앱처럼 쾌적하게 플레이 가능합니다.",

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-8115408139732115">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8115408139732115"
+     crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppet2D - 2D 컷아웃 퍼펫 - inkinno</title>
+    <meta name="description" content="관절 조각으로 나눈 2D 인형을 드래그로 포즈 잡는 데스크톱 툴 Puppet2D 소개.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        .doc { max-width: 860px; margin: 120px auto 60px; padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; backdrop-filter: blur(16px); box-shadow: var(--glass-shadow); line-height: 1.75; }
+        .doc h1 { font-size: 2rem; margin-bottom: .5rem; }
+        .doc h2 { font-size: 1.3rem; margin: 2rem 0 .75rem; color: #fff; }
+        .doc p, .doc li { color: var(--text-muted); }
+        .doc ul, .doc ol { padding-left: 1.4rem; }
+        .doc img { width: 100%; border-radius: 12px; margin: 1rem 0; border: 1px solid var(--glass-border); }
+        .doc pre { background: rgba(0,0,0,.4); padding: 14px 16px; border-radius: 10px; overflow-x: auto; font-size: .9rem; color: #e6e6e6; }
+        .doc code { font-family: Consolas, monospace; }
+        .doc table { width: 100%; border-collapse: collapse; margin: .5rem 0; }
+        .doc td { padding: 8px 10px; border-bottom: 1px solid var(--glass-border); color: var(--text-muted); vertical-align: top; }
+        .doc td:first-child { color: #fff; white-space: nowrap; }
+        .back { color: var(--text-muted); text-decoration: none; font-size: .9rem; }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="container header-container">
+            <h1 class="logo"><a href="../" style="text-decoration:none; color:inherit;">in<span>kinno</span></a></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../#home">Home</a></li>
+                    <li><a href="../#projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <article class="doc">
+                <a href="../#projects" class="back">&larr; 프로젝트 목록</a>
+                <h1>Puppet2D <span class="text-gradient">2D 컷아웃 퍼펫</span></h1>
+                <p>관절마다 큰 조각으로 나눈 2D 인형을 마우스로 움직여 포즈를 잡는 데스크톱 툴입니다. 3D 모델 없이 2D 각도와 깊이값만으로 움직이고, 앞/뒤 깊이에 따라 조각 크기와 원근이 자동으로 바뀝니다. (Rust + egui, Windows)</p>
+                <img src="shot.jpg" alt="Puppet2D 편집 화면: 왼쪽 파츠 목록, 가운데 인형, 오른쪽 편집 패널" loading="lazy">
+
+                <h2>주요 기능</h2>
+                <ul>
+                    <li><b>IK 드래그</b> — 손·발 끝 관절을 끌면 손목·팔꿈치·어깨가 따라옵니다. 조각 몸통을 끌면 그 부위만 회전.</li>
+                    <li><b>관절별 깊이와 원근</b> — 마우스 휠로 앞/뒤 깊이 조절. 한쪽 끝만 앞으로 나오면 사다리꼴로 커지고, 기울면 길이가 짧아집니다(원근 단축).</li>
+                    <li><b>깊이 전파율</b> — 관절만 움직일지, 아래 파츠 전체가 같이 따라올지 0~1 사이로 조절.</li>
+                    <li><b>카메라 앵글</b> — 우클릭 드래그로 좌우/상하 패닝, 줌. 깊이에 따라 앞뒤 순서 자동 정렬.</li>
+                    <li><b>자유 변형 (Ctrl+T)</b> — 조각이나 여러 부위(예: 눈코입)를 한 박스로 이동·왜곡·원근 변형.</li>
+                    <li><b>프리셋 + 랜덤</b> — 기본 서기, 한 발 앞으로 등 포즈 프리셋과 각도·깊이 랜덤 흔들기.</li>
+                    <li><b>포즈 JSON · 스틸 내보내기</b> — AI가 쓴 포즈 JSON을 불러와 손으로 다듬고, 원하는 범위를 PNG로 저장. 창 없이 CLI로도 렌더링됩니다.</li>
+                </ul>
+
+                <h2>기본 조작</h2>
+                <table>
+                    <tr><td>부위 선택</td><td>클릭 (Ctrl/Shift+클릭 = 여러 개)</td></tr>
+                    <tr><td>손·발 끝으로 끌기</td><td>관절 원(○) 드래그</td></tr>
+                    <tr><td>앞/뒤 깊이</td><td>조각 위에서 마우스 휠</td></tr>
+                    <tr><td>카메라</td><td>우클릭 드래그 = 앵글, Ctrl+휠 = 줌</td></tr>
+                    <tr><td>실행취소</td><td>Ctrl+Z / Ctrl+Y</td></tr>
+                </table>
+            </article>
+        </div>
+    </main>
+    <footer class="glass-footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h4 class="logo">in<span>kinno</span></h4>
+                <p>&copy; 2026 inkinno. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
